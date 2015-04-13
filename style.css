@@ -1,0 +1,25 @@
+﻿/*
+ Theme Name:   Московская область
+ Theme URI:    http://rctmo.ru
+ Description:  Внешний вид веб-сайтов из домена Правительства Московской области (mosreg.ru).
+ Author:       Егор Зайцев
+ Author URI:   http://rctmo.ru
+ Version:      1.0.0
+ Tags:         none
+ Text Domain:  dpmo
+*/
+
+@import url(h5bp.css);
+@import url(b-anav.css);
+@import url(site-title.css);
+
+.site-title{background-color:#8c2c2c}
+.header header{background-color:#b33838}
+::selection{background:#964c4c}
+.search-txt{background:#9b6969}
+a:hover,a:active,a.hover,.news-cols .eventlist:hover a{color:#902121}
+.mainmenu li.current>a,.mainmenu li.current>a:link,.mainmenu li.current>a:visited{color:#e49393}
+
+//@import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,700&subset=cyrillic,latin);
+//@import url(http://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic);
+

@@ -1,0 +1,84 @@
+.sp-title { background-color: #3D3D3D; padding: 6px 0; color: #fff; font-size: 0.8em; }
+.sp-title a { color: #fff; }
+.sp-title .sparr {
+    margin-left: 6px;
+    position: absolute;
+    top: -6px;
+    font-size: 1.4em;
+
+}
+
+.sp-title a:hover {
+    color: #ffffff;
+}
+.question .guber .name{min-height:75px;margin-bottom:7px}
+.header{position:static}
+.site-title{font-size:16px;background-color:#000;color:#fff}
+.site-title .st-wrapper{padding:14px 0;position:relative}
+.site-title .gov_logo{position:absolute;top:7px;right:-4px}
+.site-title .gov_logo img{width:25px}
+.site-title .st-wrapper a{color:#fff}
+.site-title a:hover{text-decoration:none}
+.mainmenu{padding-left:1px}
+.mainmenu li:first-child,.mainmenu li:first-child a{margin-left:0}
+.mainmenu .menubar-inner li{margin:0}
+/* Это уже есть в style.css! .search-txt{width:300px;opacity:1;padding-left:6px}*/
+.main{margin-top:-2px}
+.search-sbm{opacity:.8}
+.menubar-aside{width:200px;padding:13px 30px 0}
+.blind-trigger{background-position:0 -639px;opacity:.8}
+.black-and-white .site-title{background-color:#000 !important}
+.white-and-black .site-title{background-color:#fff !important}
+.white-and-black .site-title .st-wrapper a{color:#000}
+.black-and-white .search-txt,.white-and-black .search-txt{background:#bdbdbd !important;color:#000}
+body.blindOn .main{margin-top:0}
+
+.question_inner{width:200px;padding-top: 16px}
+.question_inner .guber,.question_inner .text{display:block;width:auto;padding:0;}
+.question_inner .guber .name{min-height:86px;}
+.question_inner .guber .place{font-size:.9em;}
+.question_inner .text{margin-top:14px;font-size:.9em;}
+.question_inner .redButton{margin-top:16px;position:static;}
+.searchOpened .search-txt { width: 200px; }
+
+
+
+.news-item .date {
+    left: -113px;
+    width: 97px;
+}
+
+
+.news-one table, .docs_text table {
+    background-color: #F5F5F5;
+    width: 100%;
+}
+
+.news-one table p, .docs_text table p {
+    margin-bottom: 3px;
+}
+
+.news-one table td, .docs_text table td {
+    border: 1px solid #fff;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+
+.question .guber .pic {
+    position: absolute;
+    width: 53px;
+    height: auto;
+    max-height: 64px;
+}
+
+.question .guber .place {
+    font-size: 0.9em;
+}
+
+
+.question .guber .name {
+    padding-left: 64px;
+    width: 91px;
+    min-height: 64px;
+}
