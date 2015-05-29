@@ -35,9 +35,12 @@
 
 	?></title>
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
+<link rel="stylesheet" type="text/css" media="all" href="<?php echo get_template_directory_uri(); ?>/css/slick.css" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/jquery-2.1.3.min.js"></script>
-<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/script.js"></script>
+<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/plugins.js"></script>
+<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/carousel.js"></script>
+<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/slick.js"></script>
   
 <?php
 	/*

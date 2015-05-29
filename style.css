@@ -23,3 +23,15 @@ a:hover,a:active,a.hover,.news-cols .eventlist:hover a{color:#902121}
 //@import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,700&subset=cyrillic,latin);
 //@import url(http://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic);
 
+.corner-ad {
+	display: block;
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	top: -10px;
+	right: -10 px;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+}

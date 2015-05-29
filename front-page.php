@@ -22,30 +22,30 @@ Template Name: Frontpage Template
 <section>
     <div class="wrapper">
       <h2><a href="/?page_id=801">Каталог объектов →</a></h2>
-      <div class="arl disabled"></div><div class="programs">
+      <div class="programs">
         <div class="frame">
           <?php echo get_trades(); ?>                                                           
         </div><!-- /.frame -->
-        <div class="arr disabled"></div></div><!-- /.programs -->
+        </div><!-- /.programs -->
     </div><!-- /.wrapper -->
 </section>
 
 <section class="news-cols">
    <div class="wrapper">
      <div class="col">
-       <h3 class="news-title"><a href="<?php get_category_link(7); ?>"><?php echo get_cat_name(7);?></a></h3>
+       <h3 class="news-title"><a href="<?php get_category_link(6); ?>"><?php echo get_cat_name(6);?></a></h3>
          <ul class="eventlist">
-           <?php echo get_posts_category(7); ?>
+           <?php echo get_posts_category(6, 0); ?>
+            </ul><!-- /.eventlist -->
+</div><!-- /.col --><div class="col">
+    <h3 class="news-title" style="background: none;"></h3>
+    <ul class="eventlist">
+                <?php echo get_posts_category(6, 5); ?>
             </ul><!-- /.eventlist -->
 </div><!-- /.col --><div class="col">
     <h3 class="news-title"><a href="<?php get_category_link(8); ?>"><?php echo get_cat_name(8);?></a></h3>
     <ul class="eventlist">
                 <?php echo get_posts_category(8); ?>
-            </ul><!-- /.eventlist -->
-</div><!-- /.col --><div class="col">
-    <h3 class="news-title"><a href="<?php get_category_link(6); ?>"><?php echo get_cat_name(6);?></a></h3>
-    <ul class="eventlist">
-                <?php echo get_posts_category(6); ?>
             </ul><!-- /.eventlist -->
 </div><!-- /.col -->    </div>
 </section>
