@@ -290,3 +290,4 @@ function special_nav_class($classes, $item){
      return $classes;
 }
 	
+include 'wp_tender.php';
