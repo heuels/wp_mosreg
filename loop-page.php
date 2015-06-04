@@ -1,17 +1,16 @@
 <?php
 /**
- * The loop that displays a page
+ * Стандартный шаблон страницы.
  *
- * The loop displays the posts and the post content. See
- * http://codex.wordpress.org/The_Loop to understand it and
- * http://codex.wordpress.org/Template_Tags to understand
- * the tags used in it.
+ * Документация по методам:
+ * http://codex.wordpress.org/The_Loop
+ * http://codex.wordpress.org/Template_Tags
  *
- * This can be overridden in child themes with loop-page.php.
+ * Может быть переопределен в файле loop-page.php.
  *
- * @package WordPress
- * @subpackage Twenty_Ten
- * @since Twenty Ten 1.2
+ * @author Егор Зайцев
+ * @package wp_mosreg
+ * @version 0.0.1
  */
 ?>
 
@@ -26,7 +25,10 @@
 
 					<div class="entry-content">
 						<?php the_content(); ?>
-						<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'twentyten' ), 'after' => '</div>' ) ); ?>
+						<?php
+              // TODO: Let go of twentyten.
+              wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'twentyten' ), 'after' => '</div>' ) ); 
+            ?>
 						<?php edit_post_link( __( 'Edit', 'twentyten' ), '<span class="edit-link">', '</span>' ); ?>
 					</div><!-- .entry-content -->
 				</div><!-- #post-## -->

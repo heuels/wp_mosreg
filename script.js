@@ -11,7 +11,7 @@ $(function() {
 		dots: false,
 		frame: '.frame',
 		item: 'a',
-		itemsPerScreen: 3
+		itemsPerScreen: 4
 	});
 	$('.projects').carousel({
 		arrows: true,

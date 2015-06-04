@@ -1,17 +1,16 @@
 <?php
 /**
- * The loop that displays a single post
+ * Шаблон для вывода одной записи.
  *
- * The loop displays the posts and the post content. See
- * http://codex.wordpress.org/The_Loop to understand it and
- * http://codex.wordpress.org/Template_Tags to understand
- * the tags used in it.
+ * Документация по методам:
+ * http://codex.wordpress.org/The_Loop
+ * http://codex.wordpress.org/Template_Tags
  *
- * This can be overridden in child themes with loop-single.php.
+ * Может быть переопределен в файле loop-page.php.
  *
- * @package WordPress
- * @subpackage Twenty_Ten
- * @since Twenty Ten 1.2
+ * @author Егор Зайцев
+ * @package wp_mosreg
+ * @version 0.0.1
  */
 ?>
 

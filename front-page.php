@@ -1,9 +1,26 @@
 <?php
-/*
-Template Name: Frontpage Template
-*/
+/**
+ * Шаблон для вывода главной страницы.
+ *
+ * Документация по методам:
+ * http://codex.wordpress.org/The_Loop
+ * http://codex.wordpress.org/Template_Tags
+ *
+ * Может быть переопределен в файле loop-page.php.
+ *
+ * @author Егор Зайцев
+ * @package wp_mosreg
+ * @version 0.0.1
+ */
 ?>
+
 <?php get_header(); ?>
+
+<section class="breadcrumbs">
+<div class="wrapper">
+<a href="/" title="">В ГКУ «РЦТ» открыты вакансии в Правовом управлении, Управлении реализации имущественных прав</a>
+</div>
+</section>
 
 <section class="subheader">
   <div class="wrapper">

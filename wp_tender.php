@@ -1,5 +1,12 @@
 <?php
-
+/**
+ * Пользовательский тип записи - торги.
+ * 
+ * @author Егор Зайцев <zev@rctmo.ru>
+ * @package wp_mosreg 
+ * @version 0.0.1
+ */
+ 
 add_action('init', 'tender_register');
  
 function tender_register() {
