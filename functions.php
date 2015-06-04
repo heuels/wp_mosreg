@@ -174,8 +174,8 @@ function get_trades() {
     echo ($post->post_content == '') ? '<a href="http://rctmo.ru/?page_id=542" class="program">' : '<a href="'.get_permalink($post->ID).'" class="program">';
     echo get_the_post_thumbnail($post->ID, array( 225, 225), array('class' => 'pic'));
     echo '<div class="text"><h4>'.$post->post_title.'</h4><p>'.$post->post_excerpt.'</p>';
-    if ($post_status) echo '<span class="tType">'.$post_status.'</span> ';
     if ($trade_type) echo '<span class="tType">'.$trade_type.'</span>';
+    if ($post_status) echo '<span class="tType">'.$post_status.'</span> ';
     echo '</div></a>';
   }
 }

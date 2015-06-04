@@ -47,6 +47,9 @@ function admin_init(){
 function tender_campain(){
   global $post;
   $custom = get_post_custom($post->ID);
+  
+  $tender_sticky = $custom["tender_sticky"][0];
+  
   $apply_start = $custom["tender_begin"][0];
   $apply_finish = $custom["tender_finish"][0];
   $auction_date = $custom["tender_date"][0];
@@ -69,6 +72,7 @@ function tender_info() {
   $tender_center = $custom["tender_center"][0];
   $tender_lgimg = $custom["tender_lgimg"][0];
   $tender_smimg = $custom["tender_smimg"][0];
+  $tender_mapzoom = $custom["tender_mapzoom"][0];
   
   if ($tender_address != '') {
     if ($tender_center == '') {
@@ -76,20 +80,33 @@ function tender_info() {
     } else {
       $tender_place = preg_replace('/\s+/', '', $tender_center);
     }
-    $tender_lgimg = "https://maps.googleapis.com/maps/api/staticmap?center=".$tender_place."&zoom=12&size=550x300&scale=2&style=feature:landscape.man_made|element:geometry|color:0xf7f1df&style=feature:landscape.natural|element:geometry|color:0xd0e3b4&style=feature:landscape.natural.terrain|element:geometry|visibility:off&style=feature:poi|element:labels|visibility:off&style=feature:poi.business|element:all|visibility:off&style=feature:poi.medical|element:geometry|color:0xfbd3da&style=feature:poi.park|element:geometry|color:0xbde6ab&style=feature:road|element:geometry.stroke|visibility:off&style=feature:road|element:labels|visibility:off&style=feature:road.highway|element:geometry.fill|color:0xffe15f&style=feature:road.highway|element:geometry.stroke|color:0xefd151&style=feature:road.arterial|element:geometry.fill|color:0xffffff&style=feature:road.local|element:geometry.fill|color:black&style=feature:transit.station.airport|element:geometry.fill|color:0xcfb2db&style=feature:water|element:geometry|color:0xa2daf2";
-    $tender_smimg = "https://maps.googleapis.com/maps/api/staticmap?center=".$tender_place."&zoom=12&size=225x150&scale=2&style=feature:landscape.man_made|element:geometry|color:0xf7f1df&style=feature:landscape.natural|element:geometry|color:0xd0e3b4&style=feature:landscape.natural.terrain|element:geometry|visibility:off&style=feature:poi|element:labels|visibility:off&style=feature:poi.business|element:all|visibility:off&style=feature:poi.medical|element:geometry|color:0xfbd3da&style=feature:poi.park|element:geometry|color:0xbde6ab&style=feature:road|element:geometry.stroke|visibility:off&style=feature:road|element:labels|visibility:off&style=feature:road.highway|element:geometry.fill|color:0xffe15f&style=feature:road.highway|element:geometry.stroke|color:0xefd151&style=feature:road.arterial|element:geometry.fill|color:0xffffff&style=feature:road.local|element:geometry.fill|color:black&style=feature:transit.station.airport|element:geometry.fill|color:0xcfb2db&style=feature:water|element:geometry|color:0xa2daf2";
+    $tender_lgimg = "https://maps.googleapis.com/maps/api/staticmap?center=".$tender_place."&size=550x300&scale=2&style=feature:landscape.man_made|element:geometry|color:0xf7f1df&style=feature:landscape.natural|element:geometry|color:0xd0e3b4&style=feature:landscape.natural.terrain|element:geometry|visibility:off&style=feature:poi|element:labels|visibility:off&style=feature:poi.business|element:all|visibility:off&style=feature:poi.medical|element:geometry|color:0xfbd3da&style=feature:poi.park|element:geometry|color:0xbde6ab&style=feature:road|element:geometry.stroke|visibility:off&style=feature:road|element:labels|visibility:off&style=feature:road.highway|element:geometry.fill|color:0xffe15f&style=feature:road.highway|element:geometry.stroke|color:0xefd151&style=feature:road.arterial|element:geometry.fill|color:0xffffff&style=feature:road.local|element:geometry.fill|color:black&style=feature:transit.station.airport|element:geometry.fill|color:0xcfb2db&style=feature:water|element:geometry|color:0xa2daf2";
+    $tender_smimg = "https://maps.googleapis.com/maps/api/staticmap?center=".$tender_place."&size=225x150&scale=2&style=feature:landscape.man_made|element:geometry|color:0xf7f1df&style=feature:landscape.natural|element:geometry|color:0xd0e3b4&style=feature:landscape.natural.terrain|element:geometry|visibility:off&style=feature:poi|element:labels|visibility:off&style=feature:poi.business|element:all|visibility:off&style=feature:poi.medical|element:geometry|color:0xfbd3da&style=feature:poi.park|element:geometry|color:0xbde6ab&style=feature:road|element:geometry.stroke|visibility:off&style=feature:road|element:labels|visibility:off&style=feature:road.highway|element:geometry.fill|color:0xffe15f&style=feature:road.highway|element:geometry.stroke|color:0xefd151&style=feature:road.arterial|element:geometry.fill|color:0xffffff&style=feature:road.local|element:geometry.fill|color:black&style=feature:transit.station.airport|element:geometry.fill|color:0xcfb2db&style=feature:water|element:geometry|color:0xa2daf2";
   }
   
+  if ($tender_longlat != '') {
+    $tender_lgimg = $tender_lgimg . "&markers=size:small|color:red|" . $tender_longlat;
+    $tender_smimg = $tender_smimg . "&markers=size:small|color:red|" . $tender_longlat;
+  }
+
+  if ($tender_mapzoom == '') $tender_mapzoom = 12;
+  
+  $tender_lgimg = $tender_lgimg . "&zoom=" . $tender_mapzoom;
+  $tender_smimg = $tender_smimg . "&zoom=" . $tender_mapzoom;
+ 
   ?>
+  <input type="checkbox">Прилепить объект</input>
   <p><label>Адресные ориентиры объекта:</label><br />
   <textarea cols="100" name="tender_address" placeholder="Московская область, Шаховской район"><?php echo $tender_address; ?></textarea></p>
-  <!--<p><label>Географические координаты точек, которые необходимо отметить на карте (необязательно):</label><br />
-  <textarea cols="100" name="tender_longlat" placeholder="55.867897, 37.402898; 55.816020, 37.381161"><?php echo $tender_longlat; ?></textarea></p>-->
+  <p><label>Географические координаты точек, которые необходимо отметить на карте: <small>узнать широту/долготу можно <a href="http://gmaps-samples.googlecode.com/svn/trunk/geocoder/singlegeocode.html">здесь</a>.</small></label><br />
+  <textarea cols="100" name="tender_longlat" placeholder="55.867897,37.402898|55.816020,37.381161"><?php echo $tender_longlat; ?></textarea></p>
   <p><label>Центрировать карту относительно:</label><br />
-  <textarea cols="100" rows="1" name="tender_center" placeholder="Шаховская"><?php echo $tender_center; ?></textarea></p>
-  <p><label>Ссылка на скриншот карты для новости:</label><br />
+  <textarea cols="60" rows="1" name="tender_center" placeholder="Шаховская"><?php echo $tender_center; ?></textarea></p>
+  <p><label>Уровень приближения карты: <small>если все маркеры не помещаются на карте, можно уменьшить значение.</small></label><br />
+  <input type="number" name="tender_mapzoom" value="<?php echo $tender_mapzoom; ?>" /></p> 
+  <p><label>Ссылка на скриншот карты для новости: <small><a onclick="window.open('<?php echo $tender_lgimg; ?>', '_blank')">открыть в новом окне</a></small></label><br />
   <textarea cols="100" rows="5" name="tender_lgimg" placeholder="Ссылка появится после добавления адресных ориентиров и сохранения объекта" onclick="this.focus();this.select()" readonly="readonly"><?php echo $tender_lgimg; ?></textarea></p>
-  <p><label>Ссылка на скриншот карты для каталога объектов:</label><br />
+  <p><label>Ссылка на скриншот карты для каталога объектов:</label> <small><a onclick="window.open('<?php echo $tender_smimg; ?>', '_blank')">открыть в новом окне</a></small><br />
   <textarea cols="100" rows="5" name="tender_smimg" placeholder="Ссылка появится после добавления адресных ориентиров и сохранения объекта" onclick="this.focus();this.select()" readonly="readonly"><?php echo $tender_smimg; ?></textarea></p>
   <?php
 }
@@ -107,5 +124,7 @@ function save_details(){
   update_post_meta($post->ID, "tender_center", $_POST["tender_center"]);
   update_post_meta($post->ID, "tender_lgimg", $_POST["tender_lgimg"]);
   update_post_meta($post->ID, "tender_smimg", $_POST["tender_smimg"]);
+  update_post_meta($post->ID, "tender_mapzoom", $_POST["tender_mapzoom"]);
+  update_post_meta($post->ID, "tender_sticky", $_POST["tender_sticky"]);
 }
 ?>
