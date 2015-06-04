@@ -82,18 +82,19 @@ function tender_info() {
     }
     $tender_lgimg = "https://maps.googleapis.com/maps/api/staticmap?center=".$tender_place."&size=550x300&scale=2&style=feature:landscape.man_made|element:geometry|color:0xf7f1df&style=feature:landscape.natural|element:geometry|color:0xd0e3b4&style=feature:landscape.natural.terrain|element:geometry|visibility:off&style=feature:poi|element:labels|visibility:off&style=feature:poi.business|element:all|visibility:off&style=feature:poi.medical|element:geometry|color:0xfbd3da&style=feature:poi.park|element:geometry|color:0xbde6ab&style=feature:road|element:geometry.stroke|visibility:off&style=feature:road|element:labels|visibility:off&style=feature:road.highway|element:geometry.fill|color:0xffe15f&style=feature:road.highway|element:geometry.stroke|color:0xefd151&style=feature:road.arterial|element:geometry.fill|color:0xffffff&style=feature:road.local|element:geometry.fill|color:black&style=feature:transit.station.airport|element:geometry.fill|color:0xcfb2db&style=feature:water|element:geometry|color:0xa2daf2";
     $tender_smimg = "https://maps.googleapis.com/maps/api/staticmap?center=".$tender_place."&size=225x150&scale=2&style=feature:landscape.man_made|element:geometry|color:0xf7f1df&style=feature:landscape.natural|element:geometry|color:0xd0e3b4&style=feature:landscape.natural.terrain|element:geometry|visibility:off&style=feature:poi|element:labels|visibility:off&style=feature:poi.business|element:all|visibility:off&style=feature:poi.medical|element:geometry|color:0xfbd3da&style=feature:poi.park|element:geometry|color:0xbde6ab&style=feature:road|element:geometry.stroke|visibility:off&style=feature:road|element:labels|visibility:off&style=feature:road.highway|element:geometry.fill|color:0xffe15f&style=feature:road.highway|element:geometry.stroke|color:0xefd151&style=feature:road.arterial|element:geometry.fill|color:0xffffff&style=feature:road.local|element:geometry.fill|color:black&style=feature:transit.station.airport|element:geometry.fill|color:0xcfb2db&style=feature:water|element:geometry|color:0xa2daf2";
-  }
   
-  if ($tender_longlat != '') {
-    $tender_lgimg = $tender_lgimg . "&markers=size:small|color:red|" . $tender_longlat;
-    $tender_smimg = $tender_smimg . "&markers=size:small|color:red|" . $tender_longlat;
-  }
-
-  if ($tender_mapzoom == '') $tender_mapzoom = 12;
+    if ($tender_longlat != '') {
+      $tender_lgimg = $tender_lgimg . "&markers=size:small|color:red|" . $tender_longlat;
+      $tender_smimg = $tender_smimg . "&markers=size:small|color:red|" . $tender_longlat;
+    }
   
-  $tender_lgimg = $tender_lgimg . "&zoom=" . $tender_mapzoom;
-  $tender_smimg = $tender_smimg . "&zoom=" . $tender_mapzoom;
- 
+    if ($tender_mapzoom == '') $tender_mapzoom = 12;
+    
+    $tender_lgimg = $tender_lgimg . "&zoom=" . $tender_mapzoom;
+    $tender_smimg = $tender_smimg . "&zoom=" . $tender_mapzoom;
+  
+  }
+   
   ?>
   <input type="checkbox">Прилепить объект</input>
   <p><label>Адресные ориентиры объекта:</label><br />
