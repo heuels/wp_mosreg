@@ -105,9 +105,9 @@ function tender_info() {
   <textarea cols="60" rows="1" name="tender_center" placeholder="Шаховская"><?php echo $tender_center; ?></textarea></p>
   <p><label>Уровень приближения карты: <small>если все маркеры не помещаются на карте, можно уменьшить значение.</small></label><br />
   <input type="number" name="tender_mapzoom" value="<?php echo $tender_mapzoom; ?>" /></p> 
-  <p><label>Ссылка на скриншот карты для новости: <small><a onclick="window.open('<?php echo $tender_lgimg; ?>', '_blank')">открыть в новом окне</a></small></label><br />
+  <p><label>Ссылка на скриншот карты для новости: <?php if ($tender_lgimg != '') echo "<small><a onclick=\"window.open('" . $tender_lgimg . "', '_blank')\">открыть в новом окне</a></small>"; ?></label><br />
   <textarea cols="100" rows="5" name="tender_lgimg" placeholder="Ссылка появится после добавления адресных ориентиров и сохранения объекта" onclick="this.focus();this.select()" readonly="readonly"><?php echo $tender_lgimg; ?></textarea></p>
-  <p><label>Ссылка на скриншот карты для каталога объектов:</label> <small><a onclick="window.open('<?php echo $tender_smimg; ?>', '_blank')">открыть в новом окне</a></small><br />
+  <p><label>Ссылка на скриншот карты для каталога объектов:</label> <?php if ($tender_smimg != '') echo "<small><a onclick=\"window.open('" . $tender_smimg . "', '_blank')\">открыть в новом окне</a></small>"; ?><br />
   <textarea cols="100" rows="5" name="tender_smimg" placeholder="Ссылка появится после добавления адресных ориентиров и сохранения объекта" onclick="this.focus();this.select()" readonly="readonly"><?php echo $tender_smimg; ?></textarea></p>
   <?php
 }
