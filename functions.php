@@ -1,6 +1,12 @@
 <?php
 
 /**
+ * Включение паранойи
+ */
+ 
+add_filter('xmlrpc_enabled', '__return_false');
+
+/**
  * Включение поддержки титульных изображений к записям;
  */
 
@@ -85,7 +91,7 @@ function wp_mosreg_event() {
 }
 
 /**
- * 
+ *
  */
 
 // Показывает последнюю прилепленную запись независимо от категории;
@@ -93,7 +99,7 @@ function wp_mosreg_event() {
 function get_promoevent() {
   $promopost = get_option( 'sticky_posts' );
   rsort( $promopost );
-  $promopost = array_slice( $promopost, 0, 1 );  
+  $promopost = array_slice( $promopost, 0, 1 );
   $promopost_thumbnail = get_the_post_thumbnail($promopost[0], array( 540, 360), array('class' => 'pic'));
   $promopost_date = beautify_date(get_the_date("d.m.Y", $promopost[0]));
   $promopost_title = get_the_title($promopost[0]);
@@ -101,16 +107,16 @@ function get_promoevent() {
   echo '<a class="promoevent" href="'.$promopost_link.'">'.$promopost_thumbnail;
   echo '<div class="text"><div class="date">'.$promopost_date.'</div><div class="title">'.$promopost_title.'</div></div>';
   echo '</a>';
-  
+
   /*
-  
+
   $args = array(
     'posts_per_page' => 1,
     'post__in'  => get_option( 'sticky_posts' ),
     'ignore_sticky_posts' => 1
   );
   $query = new WP_Query( $args );
-  
+
   */
 }
 
@@ -118,7 +124,7 @@ function get_promoevent() {
 function get_featured() {
   $featuredposts = get_option( 'sticky_posts' );
   rsort( $featuredposts );
-  $featuredposts = array_slice( $featuredposts, 0, 6 );  
+  $featuredposts = array_slice( $featuredposts, 0, 6 );
   $i = 0;
   foreach($featuredposts as $featuredpost) {
     // Первая запись пропускается, т.к. она уже отображается как главная;
@@ -183,7 +189,7 @@ function get_trades() {
 // Определяет статус торгов;
 function wp_mosreg_get_auction_status($start, $end, $auction) {
   $today = strtotime('now');
-  if ($today < strtotime($start)) { 
+  if ($today < strtotime($start)) {
     return 'oops'; // Торги еще не опубликованы?;
   } elseif ($today >= strtotime($start) && $today < strtotime($end)) {
     return 'Прием заявок';
@@ -200,29 +206,29 @@ function wp_mosreg_get_auction_status($start, $end, $auction) {
 function beautify_date($date) {
     $dates = explode('.', $date);
     $months = array('дата не указана', 'января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря');
-    return $dates[0].' '.$months[(int)$dates[1]].' '.$dates[2].' ';  
+    return $dates[0].' '.$months[(int)$dates[1]].' '.$dates[2].' ';
 }
 
 // Неработающая реализация красивого выпадающего многоуровневого меню;
 class Walker_dpmo extends Walker {
     var $db_fields = array( 'parent' => 'parent_id', 'id' => 'object_id' );
-    
+
     function start_lvl(&$output, $depth=0, $args=array()) {
       $output .= "\n<ul>\n";
     }
-  
+
     function end_lvl(&$output, $depth=0, $args=array()) {
       $output .= "</ul>\n";
     }
-    
+
     function start_el(&$output, $depth=0, $args=array()) {
       $output .= "<li><span></span>".esc_attr($item->label);
     }
-    
+
     function end_el(&$output, $depth=0, $args=array()) {
       $output .= "</li>\n";
     }
-    
+
 }
 
 /**
@@ -245,24 +251,24 @@ function dpmo_conditional_sidebar() {
     if ($post->post_parent > 0) {
       // Если дочерняя страница;
       echo '<ul>';
-      echo '<li><a href="'.get_permalink($post->post_parent).'">'.get_the_title($post->post_parent).'</a></li>'; 
+      echo '<li><a href="'.get_permalink($post->post_parent).'">'.get_the_title($post->post_parent).'</a></li>';
       $children = get_children(array('post_parent' => $post->post_parent, 'post_type' => 'page'));
       foreach ($children as $child) {
         if ($post->ID == $child->ID) {
           echo '<li class="current"><a href="'.get_permalink($child->ID).'">'.$child->post_title.'</a></li>';
         } else {
-          echo '<li><a href="'.get_permalink($child->ID).'">'.$child->post_title.'</a></li>';          
-        } 
+          echo '<li><a href="'.get_permalink($child->ID).'">'.$child->post_title.'</a></li>';
+        }
       }
       echo '</ul>';
     } else {
       echo '<ul>';
       // Если родительская страница;
-      echo '<li class="current"><a href="'.get_permalink($post->ID).'">'.get_the_title($post->ID).'</a></li>'; 
+      echo '<li class="current"><a href="'.get_permalink($post->ID).'">'.get_the_title($post->ID).'</a></li>';
       $children = get_children(array('post_parent' => $post->ID, 'post_type' => 'page'));
       foreach ($children as $child) {
         echo '<li><a href="'.get_permalink($child->ID).'">'.$child->post_title.'</a></li>';
-      } 
+      }
       echo '</ul>';
     }
   }
@@ -280,7 +286,7 @@ function dpmo_conditional_sidebar() {
 /**
  * Добавляет активному пункту меню класс "current";
  */
- 
+
 add_filter('nav_menu_css_class' , 'special_nav_class' , 10 , 2);
 
 function special_nav_class($classes, $item){
@@ -289,5 +295,5 @@ function special_nav_class($classes, $item){
      }
      return $classes;
 }
-	
+
 include 'wp_tender.php';
